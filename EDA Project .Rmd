@@ -1,0 +1,32 @@
+---
+title: "EDA Project"
+author: "Ethan Dotzler"
+date: "3/11/2021"
+output: html_document
+---
+
+## Load packages 
+```{r} 
+library(seqinr) 
+
+library(tidyverse)
+
+```
+
+
+## Load Phage Data 
+
+```{r}
+BabyDotz <- read.fasta(file = "BabyDotz.fasta")
+Dotzseq <- BabyDotz[[1]]
+
+Marcie <- read.fasta(file = "Marcie.fasta")
+Marcieseq <- Marcie[[1]]  
+
+
+```
+
+
+
+
+## Session Info 
