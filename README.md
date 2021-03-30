@@ -1,7 +1,7 @@
 EDA Project README
 ================
 Ethan Dotzler
-3/25/2021
+25/3/2021
 
 ## Abstract
 
