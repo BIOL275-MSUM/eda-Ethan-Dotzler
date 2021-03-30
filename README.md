@@ -29,6 +29,10 @@ between cluster and host differences.
 
 ## Methods
 
+For this project, I used R and RStudio to work and edit the data in
+order to create graphical outputs from the data. References for these
+are in the Literature Cited section.
+
 To begin, I first downloaded an RStudio library called seqinr, a library
 that is able to help users visualize data from biological data, such as
 DNA sequences and FASTA files (Charif and Lobry, 2007). Once the
@@ -60,3 +64,9 @@ sequences retrieval and analysis.
 
 Pittsburgh Bacteriophage Institute. (2010, April). PhagesDB.
 <https://phagesdb.org/>
+
+R version 4.0.3 (2020-10-10)
+
+Rstudio versioni 1.4.1106 RStudio Team (2021). RStudio: Integrated
+Development Environment for R. RStudio, PBC, Boston, MA URL
+<http://www.rstudio.com/>

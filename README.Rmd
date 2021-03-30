@@ -14,6 +14,8 @@ Bacteriophages are viruses that are capable of infecting specific bacterial host
 
 ## Methods 
 
+For this project, I used R and RStudio to work and edit the data in order to create graphical outputs from the data. References for these are in the Literature Cited section. 
+
 To begin, I first downloaded an RStudio library called seqinr, a library that is able to help users visualize data from biological data, such as DNA sequences and FASTA files (Charif and Lobry, 2007). Once the library(seqinr) package had been downloaded, I was able to begin picking the phage data I wanted to work with, and began downloading the files for each of the phages. 
 
 To download the data for all ten phages, I first went to the Actinobacteriophage Database to select the ten phages that I wanted to work with; the ten phages that I chose were BabyDotz, Marcie, Blab, Jehoshaphat, RobinRose, Gardevoir, BarBear, BoomRoasted, Wolfpack, and YertPhresh (Pittsburgh Bacteriophage Institute, 2010). With the ten phages selected, I began the process of downloading the individual FASTA files and loading them into RStudio. Using library(seqinr), I used the function *Name* <- read.fasta(file = *FASTA file name*), to download the FASTA files for each individual phage, renaming them into just the phage name. With the files downloaded and the library("seqinr") downloaded, I was able to start comparing the data. 
@@ -30,5 +32,9 @@ Charif, D. and Lobry, J.R. (2007). Seqin{R} 1.0-2: a contributed package to the 
 
 Pittsburgh Bacteriophage Institute. (2010, April). PhagesDB. 
 https://phagesdb.org/  
+
+R version 4.0.3 (2020-10-10) 
+
+Rstudio versioni 1.4.1106 RStudio Team (2021). RStudio: Integrated Development Environment for R. RStudio, PBC, Boston, MA URL http://www.rstudio.com/ 
 
 
