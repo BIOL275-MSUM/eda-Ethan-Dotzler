@@ -1,33 +1,62 @@
-library("seqinr") 
+## Loading Libraries 
 
 library(tidyverse)
- 
-BabyDotz <- read.fasta(file = "BabyDotz.fasta")
-Dotzseq <- BabyDotz[[1]]
 
-Marcie <- read.fasta(file = "Marcie.fasta")
-Marcieseq <- Marcie[[1]]  
+library(readxl)
 
-Blab <- read.fasta(file = "Blab.fasta.txt") 
-Blabseq <- Blab[[1]]
+## Creating Data 
 
-Jehoshaphat <- read.fasta(file = "Jehoshaphat.fasta.txt") 
-Jehoseq <- Jehoshaphat[[1]] 
+phages <- read_excel("Phage_Data.xlsx")
 
-RobinRose <- read.fasta(file = "RobinRose.fasta.txt") 
-RRseq <- RobinRose[[1]]  
+phages
 
-Gardevoir <- read.fasta(file = "Gardevoir.fasta.txt") 
-Gardseq <- Gardevoir[[1]] 
+## Creating Graphs 
 
-BarBear <- read.fasta(file = "BarBear.fasta.txt") 
-BBseq <- BarBear[[1]] 
+phages_sum_gc <-
+  phages %>% 
+  group_by(Cluster) %>% 
+  summarize( 
+    sampl_size = n(), 
+    mean_gc = mean(gc),
+    str_dev = sd(gc),
+    var = var(gc),
+    sem = sd(gc) / sqrt(n()), 
+    ci_upper = mean_gc + 2 * sem, 
+    ci_lower = mean_gc - 2 * sem, 
+  ) 
 
-BoomRoasted <- read.fasta(file = "BoomRoasted.fasta.txt") 
-Boomseq <- BoomRoasted[[1]] 
+phages_sum_gc 
 
-WolfPack <- read.fasta(file = "WolfPack.fasta.txt") 
-Wolfseq <- WolfPack[[1]] 
+phages_sum_bp <- 
+  phages %>% 
+  group_by(Cluster) %>% 
+  summarize( 
+    sampl_size = n(), 
+    mean_bp = mean(bp), 
+    str_dev = sd(bp), 
+    var = var(bp), 
+    sem = sd(bp) / sqrt(n()), 
+    ci_upper = mean_bp + 2 * sem,
+    ci_lower = mean_bp - 2 * sem, 
+  ) 
 
-YertPhresh <- read.fasta(file = "YertPhresh.fasta.txt") 
-Yertseq <- YertPhresh[[1]]
+phages_sum_bp 
+
+## Creating Graphs 
+
+ggplot(data = phages) + 
+  geom_jitter(mapping = aes(x = Cluster, y = gc)) + 
+  geom_crossbar( 
+    data = phages_sum_gc, 
+    mapping = aes(x = Cluster, y = mean_gc, ymax = ci_upper, ymin = ci_lower),
+    color = "cyan3"
+  )
+
+ggplot(data = phages) + 
+  geom_jitter(mapping = aes(x = Cluster, y = bp)) + 
+  geom_crossbar(
+    data = phages_sum_bp, 
+    mapping = aes(x = Cluster, y = mean_bp, ymax = ci_upper, ymin = ci_lower), 
+    color = "cyan3" 
+  ) 
+
